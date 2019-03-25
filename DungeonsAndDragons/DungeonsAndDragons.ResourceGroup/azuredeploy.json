@@ -95,7 +95,7 @@
     }
   ],
   "outputs": {
-    "web-app-api-name": {
+    "webAppApiName": {
       "type": "string",
       "value": "[variables('web-app-api-name')]"
     }
