@@ -1,0 +1,103 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "service-plan-sku": {
+      "type": "string",
+      "defaultValue": "F1",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "metadata": {
+        "description": "Describes plan's pricing tier and capacity. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/"
+      }
+    },
+    "service-plan-number-of-workers": {
+      "type": "int",
+      "defaultValue": 1
+    }
+  },
+  "variables": {
+    "service-plan-name": "[concat(parameters('name'), '-service-plan-', parameters('environment'))]",
+    "web-app-api-name": "[concat(parameters('name'), '-api-', parameters('environment'))]",
+    "document-db-name": "[concat(parameters('name'), '-db-', parameters('environment'))]",
+    "mongo-db-name": "[concat(parameters('name'), '-mongo-db')]"
+  },
+  "resources": [
+    // service-plan
+    {
+      "name": "[variables('service-plan-name')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2015-08-01",
+      "sku": {
+        "name": "[parameters('service-plan-sku')]"
+      },
+      "dependsOn": [],
+      "tags": {
+        "displayName": "service-plan"
+      },
+      "properties": {
+        "name": "[variables('service-plan-name')]",
+        "numberOfWorkers": "[parameters('service-plan-number-of-workers')]"
+      }
+    },
+    // api
+    {
+      "name": "[variables('web-app-api-name')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2015-08-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('service-plan-name'))]"
+      ],
+      "tags": {
+        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', variables('service-plan-name')))]": "Resource",
+        "displayName": "api"
+      },
+      "properties": {
+        "name": "[variables('web-app-api-name')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('service-plan-name'))]",
+        "siteConfig": {
+          "use32BitWorkerProcess": "true",
+          "alwaysOn": "false",
+          "appSettings": [
+            {
+              "name": "Mongo:ConnectionString",
+              "value": "[listConnectionStrings(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('document-db-name')), '2015-04-08').connectionStrings[0].connectionString]"
+            },
+            {
+              "name": "Mongo:Database",
+              "value": "[variables('mongo-db-name')]"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "web-app-api-name": {
+      "type": "string",
+      "value": "[variables('web-app-api-name')]"
+    }
+  }
+}

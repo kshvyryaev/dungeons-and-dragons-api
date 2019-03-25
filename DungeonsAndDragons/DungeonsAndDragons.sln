@@ -31,11 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonsAndDragons.Domain.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonsAndDragons.Persistence.Contracts", "DungeonsAndDragons.Persistence.Contracts\DungeonsAndDragons.Persistence.Contracts.csproj", "{788931A6-6E59-40CF-BDD0-63C04B06600D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonsAndDragons.Domain.Validation", "DungeonsAndDragons.Domain.Validation\DungeonsAndDragons.Domain.Validation.csproj", "{EE6B4739-12FE-4FB6-93B3-B235A9596D5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonsAndDragons.Domain.Validation", "DungeonsAndDragons.Domain.Validation\DungeonsAndDragons.Domain.Validation.csproj", "{EE6B4739-12FE-4FB6-93B3-B235A9596D5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonsAndDragons.WebApi", "DungeonsAndDragons.WebApi\DungeonsAndDragons.WebApi.csproj", "{9273DD1F-80BD-427E-BAE4-38CC26A49368}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonsAndDragons.WebApi", "DungeonsAndDragons.WebApi\DungeonsAndDragons.WebApi.csproj", "{9273DD1F-80BD-427E-BAE4-38CC26A49368}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonsAndDragons.Persistence.Specifications", "DungeonsAndDragons.Persistence.Specifications\DungeonsAndDragons.Persistence.Specifications.csproj", "{B30A0B0C-8180-4996-850B-9B4C3C5E7AFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonsAndDragons.Persistence.Specifications", "DungeonsAndDragons.Persistence.Specifications\DungeonsAndDragons.Persistence.Specifications.csproj", "{B30A0B0C-8180-4996-850B-9B4C3C5E7AFA}"
+EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "DungeonsAndDragons.ResourceGroup", "DungeonsAndDragons.ResourceGroup\DungeonsAndDragons.ResourceGroup.deployproj", "{7FEE4783-E123-4FC5-B3B1-95EC773DB84C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,10 @@ Global
 		{B30A0B0C-8180-4996-850B-9B4C3C5E7AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B30A0B0C-8180-4996-850B-9B4C3C5E7AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B30A0B0C-8180-4996-850B-9B4C3C5E7AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FEE4783-E123-4FC5-B3B1-95EC773DB84C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FEE4783-E123-4FC5-B3B1-95EC773DB84C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FEE4783-E123-4FC5-B3B1-95EC773DB84C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FEE4783-E123-4FC5-B3B1-95EC773DB84C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
