@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DungeonsAndDragons.Base.Domain\DungeonsAndDragons.Base.Domain.csproj" />
+    <ProjectReference Include="..\DungeonsAndDragons.Entities\DungeonsAndDragons.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
