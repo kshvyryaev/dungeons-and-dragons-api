@@ -36,8 +36,8 @@ namespace DungeonsAndDragons.WebApi
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseCors(x => 
-                x.AllowAnyMethod()
+            app.UseCors(c => 
+                c.AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowAnyOrigin()
                 .AllowCredentials());
@@ -55,9 +55,10 @@ namespace DungeonsAndDragons.WebApi
             app.UseMvc();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
+            app.UseSwaggerUI(s =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "DungeonsAndDragons Api V1");
+                s.RoutePrefix = string.Empty;
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "DungeonsAndDragons Api V1");
             });
         }
     }
